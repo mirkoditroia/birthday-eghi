@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Auguri pixel art per la principessa EGHI">
-  <title>EGHI 22</title>
+  <title>EGHI 21</title>
   <style>
     :root {
       --bg: #13002e;
@@ -24,12 +24,12 @@
 
     html,
     body {
-      min-height: 100%;
+      height: 100%;
       margin: 0;
     }
 
     body {
-      overflow-x: hidden;
+      overflow: hidden;
       color: var(--white);
       font-family: "Courier New", Courier, monospace;
       image-rendering: pixelated;
@@ -62,9 +62,9 @@
     .screen {
       position: relative;
       display: grid;
-      min-height: 100vh;
+      height: 100dvh;
       place-items: center;
-      padding: 18px 12px 28px;
+      padding: max(8px, env(safe-area-inset-top)) 10px max(8px, env(safe-area-inset-bottom));
     }
 
     .sun {
@@ -104,8 +104,11 @@
     }
 
     .card {
+      display: flex;
+      flex-direction: column;
       width: min(430px, 100%);
-      padding: 18px;
+      max-height: calc(100dvh - 16px);
+      padding: 14px;
       border: var(--pixel) solid var(--cyan);
       background: rgba(9, 0, 29, 0.86);
       box-shadow:
@@ -115,9 +118,9 @@
     }
 
     .title {
-      margin: 0 0 14px;
+      margin: 0 0 8px;
       color: var(--yellow);
-      font-size: clamp(2.5rem, 15vw, 4.3rem);
+      font-size: clamp(2.35rem, 13vw, 3.85rem);
       line-height: 0.9;
       text-align: center;
       text-transform: uppercase;
@@ -128,21 +131,21 @@
     }
 
     .subtitle {
-      margin: 0 0 16px;
+      margin: 0 0 8px;
       color: var(--cyan);
-      font-size: 1.05rem;
+      font-size: clamp(0.82rem, 3.6vw, 1rem);
       text-align: center;
       text-transform: uppercase;
     }
 
     .date {
       width: fit-content;
-      margin: 0 auto 16px;
-      padding: 6px 12px;
+      margin: 0 auto 10px;
+      padding: 5px 11px;
       border: var(--pixel) solid var(--yellow);
       background: #05000f;
       color: var(--yellow);
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       font-weight: 700;
       text-align: center;
       box-shadow: var(--pixel) var(--pixel) 0 var(--pink);
@@ -150,8 +153,8 @@
 
     .pixel-scene {
       position: relative;
-      height: 170px;
-      margin-bottom: 16px;
+      height: clamp(118px, 18svh, 150px);
+      margin-bottom: 10px;
       border: var(--pixel) solid var(--pink);
       overflow: hidden;
       background:
@@ -170,10 +173,112 @@
     }
 
     .crown { top: 22px; left: 50%; transform: translateX(-50%); color: var(--yellow); font-size: 3rem; }
-    .dog-a { left: 18px; bottom: 24px; }
-    .dog-b { right: 18px; bottom: 24px; transform: scaleX(-1); animation-delay: -0.8s; }
     .tulip-a { left: 72px; bottom: 16px; }
     .tulip-b { right: 78px; bottom: 16px; animation-delay: -0.5s; }
+
+    .dachshund {
+      position: absolute;
+      bottom: 26px;
+      width: 94px;
+      height: 48px;
+      filter: drop-shadow(0 0 8px rgba(255, 229, 92, 0.6));
+      animation: bob 1.6s steps(2, end) infinite;
+    }
+
+    .dog-a { left: 12px; }
+    .dog-b { right: 12px; transform: scaleX(-1); animation-delay: -0.8s; }
+
+    .dachshund .body {
+      position: absolute;
+      left: 15px;
+      bottom: 13px;
+      width: 56px;
+      height: 20px;
+      background: #b86a27;
+      border: var(--pixel) solid #3b1607;
+      box-shadow: inset 0 -5px 0 #7a3b17;
+    }
+
+    .dachshund .chest {
+      position: absolute;
+      left: 64px;
+      bottom: 16px;
+      width: 15px;
+      height: 16px;
+      background: #ffd18a;
+      border: var(--pixel) solid #3b1607;
+    }
+
+    .dachshund .head {
+      position: absolute;
+      left: 70px;
+      bottom: 25px;
+      width: 22px;
+      height: 18px;
+      background: #b86a27;
+      border: var(--pixel) solid #3b1607;
+    }
+
+    .dachshund .snout {
+      position: absolute;
+      left: 88px;
+      bottom: 26px;
+      width: 18px;
+      height: 12px;
+      background: #ffd18a;
+      border: var(--pixel) solid #3b1607;
+    }
+
+    .dachshund .nose {
+      position: absolute;
+      left: 101px;
+      bottom: 33px;
+      width: 7px;
+      height: 7px;
+      background: #05000f;
+    }
+
+    .dachshund .ear {
+      position: absolute;
+      left: 68px;
+      bottom: 15px;
+      width: 13px;
+      height: 24px;
+      background: #6f3212;
+      border: var(--pixel) solid #3b1607;
+    }
+
+    .dachshund .tail {
+      position: absolute;
+      left: 0;
+      bottom: 30px;
+      width: 20px;
+      height: 8px;
+      background: #b86a27;
+      border: var(--pixel) solid #3b1607;
+      transform: rotate(-28deg);
+      transform-origin: right center;
+    }
+
+    .dachshund .leg {
+      position: absolute;
+      bottom: 0;
+      width: 9px;
+      height: 18px;
+      background: #7a3b17;
+      border: var(--pixel) solid #3b1607;
+    }
+
+    .dachshund .leg-one { left: 20px; }
+    .dachshund .leg-two { left: 55px; }
+    .dachshund .eye {
+      position: absolute;
+      left: 84px;
+      bottom: 36px;
+      width: 5px;
+      height: 5px;
+      background: #05000f;
+    }
 
     .iqos-device {
       position: absolute;
@@ -221,8 +326,7 @@
 
     .viewfinder {
       position: relative;
-      aspect-ratio: 3 / 4;
-      max-height: 420px;
+      height: clamp(245px, 39svh, 345px);
       overflow: hidden;
       background:
         linear-gradient(45deg, rgba(48, 247, 255, 0.14) 25%, transparent 25% 50%, rgba(48, 247, 255, 0.14) 50% 75%, transparent 75%);
@@ -281,10 +385,11 @@
     }
 
     .result {
-      min-height: 66px;
-      padding: 12px;
+      min-height: 52px;
+      padding: 8px;
       border-top: var(--pixel) solid var(--yellow);
       color: var(--green);
+      font-size: 0.95rem;
       text-align: center;
       text-transform: uppercase;
     }
@@ -292,14 +397,14 @@
     .age {
       display: block;
       color: var(--yellow);
-      font-size: 2.2rem;
+      font-size: clamp(1.7rem, 8vw, 2.1rem);
       text-shadow: 3px 3px 0 var(--pink);
     }
 
     .pixel-button {
       width: 100%;
-      margin-top: 14px;
-      padding: 14px 10px;
+      margin-top: 10px;
+      padding: 12px 10px;
       border: var(--pixel) solid var(--white);
       background: var(--pink);
       box-shadow: var(--pixel) var(--pixel) 0 var(--cyan);
@@ -338,20 +443,66 @@
 
     @media (max-width: 380px) {
       .card {
-        padding: 14px;
+        padding: 10px;
       }
 
       .pixel-scene {
-        height: 145px;
+        height: 112px;
       }
 
       .sprite {
         font-size: 2rem;
       }
 
+      .dachshund {
+        width: 82px;
+        transform: scale(0.86);
+        transform-origin: bottom left;
+      }
+
+      .dog-b {
+        transform: scaleX(-1) scale(0.86);
+        transform-origin: bottom right;
+      }
+
       .iqos-device {
         right: 44px;
         width: 66px;
+      }
+    }
+
+    @media (max-height: 780px) {
+      .title {
+        font-size: clamp(2rem, 11vw, 3.1rem);
+        margin-bottom: 5px;
+      }
+
+      .subtitle {
+        margin-bottom: 6px;
+      }
+
+      .date {
+        margin-bottom: 7px;
+        padding: 4px 9px;
+      }
+
+      .pixel-scene {
+        height: 108px;
+        margin-bottom: 8px;
+      }
+
+      .viewfinder {
+        height: 230px;
+      }
+
+      .result {
+        min-height: 46px;
+        padding: 6px;
+      }
+
+      .pixel-button {
+        margin-top: 8px;
+        padding: 10px;
       }
     }
   </style>
@@ -369,8 +520,30 @@
 
       <div class="pixel-scene" aria-hidden="true">
         <span class="sprite crown">♛</span>
-        <span class="sprite dog-a">🐕</span>
-        <span class="sprite dog-b">🐕</span>
+        <span class="dachshund dog-a">
+          <span class="tail"></span>
+          <span class="body"></span>
+          <span class="chest"></span>
+          <span class="head"></span>
+          <span class="snout"></span>
+          <span class="nose"></span>
+          <span class="ear"></span>
+          <span class="eye"></span>
+          <span class="leg leg-one"></span>
+          <span class="leg leg-two"></span>
+        </span>
+        <span class="dachshund dog-b">
+          <span class="tail"></span>
+          <span class="body"></span>
+          <span class="chest"></span>
+          <span class="head"></span>
+          <span class="snout"></span>
+          <span class="nose"></span>
+          <span class="ear"></span>
+          <span class="eye"></span>
+          <span class="leg leg-one"></span>
+          <span class="leg leg-two"></span>
+        </span>
         <span class="iqos-device"></span>
         <span class="sprite tulip-a">🌷</span>
         <span class="sprite tulip-b">🌷</span>
@@ -402,7 +575,7 @@
     function popHeart() {
       const heart = document.createElement("span");
       heart.className = "heart";
-      heart.textContent = ["🌷", "🐕", "💖", "✨"][Math.floor(Math.random() * 4)];
+      heart.textContent = ["🌷", "♥", "💖", "✨"][Math.floor(Math.random() * 4)];
       heart.style.left = `${Math.random() * 92 + 2}vw`;
       heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
       hearts.appendChild(heart);
@@ -463,7 +636,7 @@
       window.setTimeout(() => {
         cameraBox.classList.remove("scanning");
         cameraBox.classList.add("done");
-        result.innerHTML = 'Età effettiva <span class="age">22 anni</span>';
+        result.innerHTML = 'Età effettiva <span class="age">21 anni</span>';
         scanButton.disabled = false;
         for (let i = 0; i < 16; i += 1) {
           window.setTimeout(popHeart, i * 90);
