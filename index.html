@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Auguri pixel art per la principessa EGHI">
+  <title>EGHI 22</title>
+  <style>
+    :root {
+      --bg: #13002e;
+      --dark: #070015;
+      --pink: #ff3bc8;
+      --cyan: #30f7ff;
+      --yellow: #ffe55c;
+      --green: #47ff9a;
+      --white: #fff6ff;
+      --shadow: #3f147e;
+      --pixel: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      color: var(--white);
+      font-family: "Courier New", Courier, monospace;
+      image-rendering: pixelated;
+      background:
+        linear-gradient(180deg, rgba(255, 59, 200, 0.2), transparent 32%),
+        repeating-linear-gradient(0deg, transparent 0 10px, rgba(48, 247, 255, 0.1) 10px 12px),
+        linear-gradient(180deg, #21004d 0%, var(--bg) 42%, var(--dark) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.03) 0 2px,
+        transparent 2px 6px
+      );
+      z-index: 5;
+    }
+
+    button {
+      border: 0;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .screen {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: 18px 12px 28px;
+    }
+
+    .sun {
+      position: fixed;
+      top: 46px;
+      left: 50%;
+      width: 170px;
+      height: 170px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 13px, #21004d 13px 19px),
+        linear-gradient(#ffe55c 0%, #ff7adf 55%, #702bff 100%);
+      box-shadow: 0 0 0 var(--pixel) #ff7adf, 0 0 40px #ff3bc8;
+      opacity: 0.92;
+      z-index: -1;
+    }
+
+    .grid {
+      position: fixed;
+      left: -20vw;
+      right: -20vw;
+      bottom: -18vh;
+      height: 38vh;
+      transform: perspective(260px) rotateX(62deg);
+      background:
+        linear-gradient(var(--cyan) 2px, transparent 2px),
+        linear-gradient(90deg, var(--cyan) 2px, transparent 2px);
+      background-size: 34px 34px;
+      opacity: 0.42;
+      animation: gridMove 1.4s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes gridMove {
+      to { background-position-y: 34px; }
+    }
+
+    .card {
+      width: min(430px, 100%);
+      padding: 18px;
+      border: var(--pixel) solid var(--cyan);
+      background: rgba(9, 0, 29, 0.86);
+      box-shadow:
+        var(--pixel) var(--pixel) 0 var(--pink),
+        calc(var(--pixel) * 2) calc(var(--pixel) * 2) 0 var(--shadow),
+        0 0 28px rgba(255, 59, 200, 0.4);
+    }
+
+    .title {
+      margin: 0 0 14px;
+      color: var(--yellow);
+      font-size: clamp(2.5rem, 15vw, 4.3rem);
+      line-height: 0.9;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow:
+        3px 0 0 var(--pink),
+        -3px 0 0 var(--cyan),
+        0 4px 0 var(--shadow);
+    }
+
+    .subtitle {
+      margin: 0 0 16px;
+      color: var(--cyan);
+      font-size: 1.05rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .date {
+      width: fit-content;
+      margin: 0 auto 16px;
+      padding: 6px 12px;
+      border: var(--pixel) solid var(--yellow);
+      background: #05000f;
+      color: var(--yellow);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: var(--pixel) var(--pixel) 0 var(--pink);
+    }
+
+    .pixel-scene {
+      position: relative;
+      height: 170px;
+      margin-bottom: 16px;
+      border: var(--pixel) solid var(--pink);
+      overflow: hidden;
+      background:
+        linear-gradient(transparent 0 70%, rgba(48, 247, 255, 0.22) 70%),
+        radial-gradient(circle at 50% 20%, rgba(255, 229, 92, 0.26), transparent 34%),
+        #1b0647;
+    }
+
+    .sprite {
+      position: absolute;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
+      font-size: 2.3rem;
+      line-height: 1;
+      text-shadow: 2px 2px 0 #000;
+      animation: bob 1.6s steps(2, end) infinite;
+    }
+
+    .crown { top: 22px; left: 50%; transform: translateX(-50%); color: var(--yellow); font-size: 3rem; }
+    .dog-a { left: 18px; bottom: 24px; }
+    .dog-b { right: 18px; bottom: 24px; transform: scaleX(-1); animation-delay: -0.8s; }
+    .tulip-a { left: 72px; bottom: 16px; }
+    .tulip-b { right: 78px; bottom: 16px; animation-delay: -0.5s; }
+
+    .iqos-device {
+      position: absolute;
+      top: 58px;
+      right: 58px;
+      width: 74px;
+      height: 28px;
+      border: var(--pixel) solid var(--cyan);
+      background: #eafcff;
+      box-shadow: var(--pixel) var(--pixel) 0 var(--pink), 0 0 14px var(--cyan);
+      animation: bob 1.6s steps(2, end) infinite;
+    }
+
+    .iqos-device::before {
+      content: "IQOS";
+      position: absolute;
+      left: 7px;
+      top: 5px;
+      color: #13002e;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .iqos-device::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      top: 7px;
+      width: 14px;
+      height: 10px;
+      background: var(--yellow);
+      box-shadow: 0 0 12px var(--yellow), 12px 0 0 rgba(255, 255, 255, 0.26);
+    }
+
+    @keyframes bob {
+      50% { translate: 0 -7px; }
+    }
+
+    .camera-box {
+      border: var(--pixel) solid var(--yellow);
+      background: #05000f;
+      box-shadow: inset 0 0 0 var(--pixel) #2f0d6b;
+    }
+
+    .viewfinder {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      max-height: 420px;
+      overflow: hidden;
+      background:
+        linear-gradient(45deg, rgba(48, 247, 255, 0.14) 25%, transparent 25% 50%, rgba(48, 247, 255, 0.14) 50% 75%, transparent 75%);
+      background-size: 18px 18px;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+      opacity: 0.9;
+    }
+
+    .camera-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: var(--cyan);
+      font-size: 4.2rem;
+      text-shadow: 3px 3px 0 var(--pink);
+    }
+
+    .scan-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -12px;
+      height: 12px;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green), 0 0 32px var(--cyan);
+      opacity: 0;
+    }
+
+    .scanning .scan-line {
+      opacity: 1;
+      animation: scan 1.25s steps(9, end) 3;
+    }
+
+    @keyframes scan {
+      to { top: 100%; }
+    }
+
+    .face-frame {
+      position: absolute;
+      inset: 18% 20%;
+      border: var(--pixel) solid var(--green);
+      box-shadow: 0 0 18px rgba(71, 255, 154, 0.7);
+      opacity: 0;
+    }
+
+    .scanning .face-frame,
+    .done .face-frame {
+      opacity: 1;
+    }
+
+    .result {
+      min-height: 66px;
+      padding: 12px;
+      border-top: var(--pixel) solid var(--yellow);
+      color: var(--green);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .age {
+      display: block;
+      color: var(--yellow);
+      font-size: 2.2rem;
+      text-shadow: 3px 3px 0 var(--pink);
+    }
+
+    .pixel-button {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px 10px;
+      border: var(--pixel) solid var(--white);
+      background: var(--pink);
+      box-shadow: var(--pixel) var(--pixel) 0 var(--cyan);
+      color: var(--white);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .pixel-button:active {
+      transform: translate(var(--pixel), var(--pixel));
+      box-shadow: none;
+    }
+
+    .hearts {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: 4;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      animation: rise 4s linear forwards;
+      font-size: 1.6rem;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .card {
+        padding: 14px;
+      }
+
+      .pixel-scene {
+        height: 145px;
+      }
+
+      .sprite {
+        font-size: 2rem;
+      }
+
+      .iqos-device {
+        right: 44px;
+        width: 66px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sun" aria-hidden="true"></div>
+  <div class="grid" aria-hidden="true"></div>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <main class="screen">
+    <section class="card" aria-labelledby="title">
+      <h1 class="title" id="title">EGHI</h1>
+      <p class="subtitle">Buon compleanno principessa</p>
+      <p class="date">16/05</p>
+
+      <div class="pixel-scene" aria-hidden="true">
+        <span class="sprite crown">♛</span>
+        <span class="sprite dog-a">🐕</span>
+        <span class="sprite dog-b">🐕</span>
+        <span class="iqos-device"></span>
+        <span class="sprite tulip-a">🌷</span>
+        <span class="sprite tulip-b">🌷</span>
+      </div>
+
+      <div class="camera-box" id="cameraBox">
+        <div class="viewfinder">
+          <video id="video" autoplay playsinline muted></video>
+          <div class="camera-placeholder" id="placeholder">▣</div>
+          <div class="face-frame"></div>
+          <div class="scan-line"></div>
+        </div>
+        <div class="result" id="result">Scanner pixel pronto</div>
+      </div>
+
+      <button class="pixel-button" id="scanButton">Scansiona viso</button>
+    </section>
+  </main>
+
+  <script>
+    const cameraBox = document.querySelector("#cameraBox");
+    const video = document.querySelector("#video");
+    const placeholder = document.querySelector("#placeholder");
+    const result = document.querySelector("#result");
+    const scanButton = document.querySelector("#scanButton");
+    const hearts = document.querySelector("#hearts");
+    let stream = null;
+
+    function popHeart() {
+      const heart = document.createElement("span");
+      heart.className = "heart";
+      heart.textContent = ["🌷", "🐕", "💖", "✨"][Math.floor(Math.random() * 4)];
+      heart.style.left = `${Math.random() * 92 + 2}vw`;
+      heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+      hearts.appendChild(heart);
+      heart.addEventListener("animationend", () => heart.remove());
+    }
+
+    function canAskForCamera() {
+      return navigator.mediaDevices
+        && navigator.mediaDevices.getUserMedia
+        && (window.isSecureContext || location.hostname === "localhost" || location.hostname === "127.0.0.1");
+    }
+
+    async function startCamera() {
+      if (stream) {
+        return "camera";
+      }
+
+      if (!canAskForCamera()) {
+        result.textContent = "Camera bloccata: uso scansione pixel";
+        return "demo";
+      }
+
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: "user" } },
+          audio: false
+        });
+        video.srcObject = stream;
+        await video.play();
+        placeholder.style.display = "none";
+        return "camera";
+      } catch (error) {
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+          });
+          video.srcObject = stream;
+          await video.play();
+          placeholder.style.display = "none";
+          return "camera";
+        } catch (secondError) {
+          result.textContent = "Camera bloccata: uso scansione pixel";
+          return "demo";
+        }
+      }
+    }
+
+    async function scanFace() {
+      scanButton.disabled = true;
+      result.textContent = "Accesso camera...";
+      const scanMode = await startCamera();
+
+      cameraBox.classList.remove("done");
+      cameraBox.classList.add("scanning");
+      result.textContent = scanMode === "camera" ? "Scansione viso..." : "Scansione pixel...";
+
+      window.setTimeout(() => {
+        cameraBox.classList.remove("scanning");
+        cameraBox.classList.add("done");
+        result.innerHTML = 'Età effettiva <span class="age">22 anni</span>';
+        scanButton.disabled = false;
+        for (let i = 0; i < 16; i += 1) {
+          window.setTimeout(popHeart, i * 90);
+        }
+      }, 3800);
+    }
+
+    scanButton.addEventListener("click", scanFace);
+    window.setInterval(popHeart, 2600);
+  </script>
+</body>
+</html>
