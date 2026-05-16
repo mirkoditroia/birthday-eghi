@@ -174,7 +174,7 @@
 
     .crown { top: 22px; left: 50%; transform: translateX(-50%); color: var(--yellow); font-size: 3rem; }
     .tulip-a { left: 72px; bottom: 16px; }
-    .tulip-b { right: 78px; bottom: 16px; animation-delay: -0.5s; }
+    .tulip-b { right: 26px; bottom: 16px; animation-delay: -0.5s; }
 
     .dachshund {
       position: absolute;
@@ -283,7 +283,7 @@
     .iqos-device {
       position: absolute;
       top: 58px;
-      right: 58px;
+      right: 72px;
       width: 74px;
       height: 28px;
       border: var(--pixel) solid var(--cyan);
@@ -326,7 +326,9 @@
 
     .viewfinder {
       position: relative;
-      height: clamp(245px, 39svh, 345px);
+      width: min(100%, 39svh, 345px);
+      margin: 0 auto;
+      aspect-ratio: 1 / 1;
       overflow: hidden;
       background:
         linear-gradient(45deg, rgba(48, 247, 255, 0.14) 25%, transparent 25% 50%, rgba(48, 247, 255, 0.14) 50% 75%, transparent 75%);
@@ -401,6 +403,14 @@
       text-shadow: 3px 3px 0 var(--pink);
     }
 
+    .cool {
+      display: block;
+      margin-top: 2px;
+      color: var(--cyan);
+      font-size: clamp(0.95rem, 4vw, 1.12rem);
+      text-shadow: 2px 2px 0 var(--shadow);
+    }
+
     .pixel-button {
       width: 100%;
       margin-top: 10px;
@@ -466,7 +476,7 @@
       }
 
       .iqos-device {
-        right: 44px;
+        right: 70px;
         width: 66px;
       }
     }
@@ -492,7 +502,7 @@
       }
 
       .viewfinder {
-        height: 230px;
+        width: min(100%, 32svh, 310px);
       }
 
       .result {
@@ -636,7 +646,7 @@
       window.setTimeout(() => {
         cameraBox.classList.remove("scanning");
         cameraBox.classList.add("done");
-        result.innerHTML = 'Età effettiva <span class="age">21 anni</span>';
+        result.innerHTML = 'Età effettiva <span class="age">21 anni</span><span class="cool">troppo cool 😎</span>';
         scanButton.disabled = false;
         for (let i = 0; i < 16; i += 1) {
           window.setTimeout(popHeart, i * 90);
